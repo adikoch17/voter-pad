@@ -1,0 +1,16 @@
+img{
+    height: 100px;
+    width: auto;
+}
+
+.Voteoption{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.Voteoptions{
+    display: flex;
+    gap:32px;
+    margin:10vh;
+}

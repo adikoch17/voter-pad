@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+import React,{useState,useEffect} from 'react'
+// import Voteoption from './components/voteoption/Voteoption';
+import VotePage from './components/voteoption/Voteoption'
 import './App.css';
 
 function App() {
+  const [parties,setParties] = useState([]);
+  const [voter,setVoter] = useState("");
+
+useEffect(()=>{
+  let url_party = "http://localhost:8080/getparties"
+  fetch(url_party,{
+    method:"GET"
+  })
+  .then(response=>response.json())
+  .then(data =>{
+    console.log(data)
+    setParties(data);
+  })
+
+},[])
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <VotePage parties={parties}/>
     </div>
   );
 }
